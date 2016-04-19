@@ -3,7 +3,7 @@ import get_image_size
 
 def main():
     # Pull in the working directory for later. Made to be cross platform.
-    directory = os.path.dirname(os.path.realpath(__file__))
+    directory = os.path.dirname(os.path.realpath('__file__'))
     retrieveFile(directory)
 
 def retrieveFile(directory):
