@@ -15,25 +15,23 @@ def retrieveFile(directory):
             imageCalculator(width, height, rawImage, imagePil)
     return
 
-def imageCalculator(width, height, rawImage, imagePil):
-    targetWidth = 1920
-    targetHeight = 1080
-    currentRatio = float(width) / height
+def getNewDimensions(oldWidth, oldHeight, targetWidth=1920, targetHeight=1080):
+    currentRatio = float(oldWidth) / oldHeight
     targetRatio = float(targetWidth) / targetHeight
-    if currentRatio == targetRatio:
-        targetSize = targetWidth, targetHeight
-    elif currentRatio > targetRatio:
-        newWidth = int(targetHeight * currentRatio)
-        targetSize = newWidth, targetHeight
+
+    newDimensions = [targetWidth, targetHeight]
+
+    if currentRatio > targetRatio:
+        newDimensions[0] = int(targetHeight * currentRatio)
     elif currentRatio < targetRatio:
-        newHeight = int(targetWidth / currentRatio)
-        targetSize = targetWidth, newHeight
-    else:
-        print 'well shit.'
+        newDimensions[1] = int(targetWidth / currentRatio)
+
+    return newDimensions
+
+def imageCalculator(width, height, rawImage, imagePil):
+    targetSize = getNewDimensions(width, height)
     
     imageResize(targetSize, imagePil, rawImage)
-    
-    return
         
 def imageResize(targetSize, imagePil, rawImage):
     imagePil.thumbnail(targetSize, Image.ANTIALIAS)
