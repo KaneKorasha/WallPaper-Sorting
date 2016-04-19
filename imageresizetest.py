@@ -3,21 +3,31 @@ import sys
 
 from PIL import Image
 
-targetWidth = 1920
-targetHeight = 1080
-targetRatio = float(targetWidth) / targetHeight
-print targetRatio
+def main():
+    targetWidth = 1920
+    targetHeight = 1080
+    targetRatio = float(targetWidth) / targetHeight
+    imagePil = Image.open('test.jpg')
+    width, height = imagePil.size
+    currentRatio = float(width) / height
+    if currentRatio == targetRatio:
+        targetSize = targetWidth, targetHeight
+    elif currentRatio > targetRatio:
+        newWidth = int(targetHeight * currentRatio)
+        targetSize = newWidth, targetHeight
+    elif currentRatio < targetRatio:
+        newHeight = int(targetWidth / currentRatio)
+        targetSize = targetWidth, newHeight
+    else:
+        print 'well shit.'
+    imageResize(targetSize, imagePil)
+    return
 
-imagePil = Image.open('test.png')
-width, height = imagePil.size
-currentRatio = float(width) / height
-print width, height, currentRatio
-
-if currentRatio == targetRatio:
-    targetSize = 1920, 1080
+def imageResize(targetSize, imagePil):
     imagePil.thumbnail(targetSize, Image.ANTIALIAS)
-    imagePil.save('test2.png')
-else:
-    print 'well shit.'
+    imagePil.save('test.jpg')
+    return
 
+main()
+    
 raw_input('Press Enter to Exit')
