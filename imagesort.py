@@ -2,10 +2,6 @@ import os.path, shutil
 import get_image_size
 
 def main():
-    # Set directory to the picture source. This will eventually be 
-    # /home/aito/MainStorage/BTBox/Photos/PaperDump as it
-    # will be running on an Debian Server
-    # Rewrote to be pulled directly.
     directory = os.path.dirname(os.path.realpath(__file__))
     retrieveFile(directory)
 
