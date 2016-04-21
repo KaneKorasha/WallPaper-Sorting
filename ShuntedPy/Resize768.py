@@ -20,7 +20,7 @@ def imageCalculator(width, height, rawImage, imagePil):
     
     imageResize(targetSize, imagePil, rawImage)
         
-def getNewDimensions(oldWidth, oldHeight, targetWidth=1920, targetHeight=1080):
+def getNewDimensions(oldWidth, oldHeight, targetWidth=1366, targetHeight=768):
     currentRatio = float(oldWidth) / oldHeight
     targetRatio = float(targetWidth) / targetHeight
 

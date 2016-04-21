@@ -11,7 +11,7 @@ def retrieveFile(directory):
         if os.path.splitext(rawImage)[1].lower() in ('.jpg', '.jpeg', '.png'):
             # REMEMBER TO ASSIGN A CALL TO A VARIABLE YOU IDIOT
             width, height = imageFetchDimension(rawImage)
-            imageSort(rawImage, width, height, directory)
+            imageSort(rawImage, width, height)
     return
 
 # This module calls get_image_size to pull dimensions
@@ -26,7 +26,7 @@ def imageSort(rawImage, width, height):
     #move files or remove files I really don't have to play with
     if width == 1920 and height == 1080:
         #print rawImage, 'does not need to be resized, moving to 1920x1080'
-        dest = directory + '/1920x1080'
+        dest = '../1920x1080'
         imageMove(rawImage, dest)
     return
 
@@ -35,5 +35,3 @@ def imageMove(rawImage, dest):
     return
     
 main()
-
-raw_input('Press Enter to Exit')
