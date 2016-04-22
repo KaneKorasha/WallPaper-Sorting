@@ -2,9 +2,10 @@ Module File Open ()
 
 	FOR rawImage in <directory>
 		// I use Pillow, an outside module, to feed me the width and height from the metadata of an image.
-		Width, height = Call PIL class size
+		Width, height = Get Dimensions from PIL
 		Call image calculator (INT width, INT height, STR rawImage, STR imagePil)
-
+	Continue or Break
+	
 Module End
 
 //
@@ -23,18 +24,18 @@ Module get new Dimensions (Int oldWidth, Int oldHeight, Int targetWidth=1920, In
 
 // I got the following addition to my final code and pseudo code from a friend as we talked over how to best judge ratio calculation against resizing. He had to explain it to me but it now makes sense too
 
-	Current Ratio = Real (old width / old height)
-	Target Ratio = Real (target width / target height)
+	Current Ratio = Real (old width) / old height
+	Target Ratio = Real (target width) / target height
 	New dimensions = List targetWidth, targetHeight
 
 	// Enter a whole new “user” decision, if it is going to be resized based on width or height.
 	
 	IF current ratio > target Ratio
 		// maintains width, but calculates a new height against ratio.
-		New Dimensions = int (target height * current ratio)
+		New Dimensions = INT ((target height * current ratio), target height)
 	ELSE IF current ratio < target ratio
 		// maintains height, but calculates a new width against ratio.
-		New Dimesnions = INT (target width / current ratio)
+		New Dimesnions = INT ((target width / current ratio), current height)
 
 	Return New Dimensions // This becomes “Target Size”
 
