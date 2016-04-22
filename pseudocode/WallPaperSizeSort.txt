@@ -9,25 +9,25 @@ Call imageSort( STR rawImage, INT width, INT height)
 Module imageSort(STR rawImage, INT width, INT height)
 
 If width == 1920 and height == 1080
-Move image to ./1080finished
+	Move image to ./1080finished
 
 Else If width == 1366 and height == 768
- 		Move image to ./768finished
+ 	Move image to ./768finished
 	
 // I’m honestly using elif statements because I don’t yet know how to terminate a run with an if then statement in such a way that returns to pick up the next picture. Or I have not thought about it enough yet. Elif, from what I remember, can be put into an IF THEN statement to create a string of contingencies. The program then will process down the line until a directive comes back true, calling in THEN.
 
 // Now to find the images that need to be sent for me to resize when I get around to it. I need to look for anything >1920x>1080, I need AND here because I may have an image that is 1950x1000. I cannot resize this image up, only down, otherwise the image becomes blurred. Such a dimension must be passed to resize to 1366x768.
 
 Else If width >= 1920 AND height >= 1080
- 		Move image to ./1080resize
+ 	Move image to ./1080resize
 
 Else If width >= 1366 AND height >=768
- 		Move image to ./768resize
+ 	Move image to ./768resize
 
 // If the image gets this far, either it’s too small, or there is a problem with the image and it needs to be left for me to deal with.
 
 Else If width < 1366 OR height < 768
- 		Add to delete array
+ 	Add to delete array
 
 Else print “You have a problem with”, image
 End Module
