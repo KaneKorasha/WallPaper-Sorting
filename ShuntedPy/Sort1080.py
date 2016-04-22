@@ -3,7 +3,7 @@ import get_image_size
 
 def main():
     # Pull in the working directory for later. Made to be cross platform.
-    directory = os.path.dirname(os.path.realpath(__file__))
+    directory = os.path.dirname(os.path.realpath('__file__'))
     retrieveFile(directory)
 
 def retrieveFile(directory):
@@ -26,26 +26,8 @@ def imageSort(rawImage, width, height):
     #move files or remove files I really don't have to play with
     if width == 1920 and height == 1080:
         #print rawImage, 'does not need to be resized, moving to 1920x1080'
-        dest = '1920x1080'
+        dest = '../1920x1080'
         imageMove(rawImage, dest)
-    elif width == 1366 and height == 768:
-        #print rawImage, 'does not need to be resized, moving to 1366x768'
-        dest = '1366x768'
-        imageMove(rawImage, dest)
-    elif width < 1366 or height < 768:
-        #print rawImage, 'is too small, deleting.'
-        os.remove(rawImage)
-    # sort remaining files based on size
-    elif width >= 1920 and height >= 1080:
-        #print rawImage, 'is larger than 1920x1080, moving to 1920x1080Resize'
-        dest = '1920x1080Resize'
-        imageMove(rawImage, dest)
-    elif width >= 1366 and height >= 768:
-        #print rawImage, 'is larger than 1366x768, moving to 1366x768Resize'
-        dest = '1366x768Resize'
-        imageMove(rawImage, dest)
-    else:
-        print rawImage, 'has a problem'
     return
 
 def imageMove(rawImage, dest):
@@ -53,5 +35,3 @@ def imageMove(rawImage, dest):
     return
     
 main()
-
-raw_input('Press Enter to Exit')
