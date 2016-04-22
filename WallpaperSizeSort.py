@@ -1,3 +1,6 @@
+# This program sorts the images located in a directory based on dimensions
+# and need for sorting based on cropping needs.
+
 import os.path, shutil
 import get_image_size
 
